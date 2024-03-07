@@ -1,0 +1,12 @@
+D:\Programming\My Programs\All_In_One_Practice_Program\bin\Debug\All_In_One_Practice_Program.exe.config
+D:\Programming\My Programs\All_In_One_Practice_Program\bin\Debug\All_In_One_Practice_Program.exe
+D:\Programming\My Programs\All_In_One_Practice_Program\bin\Debug\All_In_One_Practice_Program.pdb
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.csproj.AssemblyReference.cache
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.Form1.resources
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.Properties.Resources.resources
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.csproj.GenerateResource.cache
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.csproj.CoreCompileInputs.cache
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.exe
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.pdb
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.csproj.ResolveComReference.cache
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.TextReplaceWindow.resources
