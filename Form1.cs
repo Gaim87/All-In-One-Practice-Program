@@ -44,11 +44,7 @@ namespace All_In_One_Practice_Program
                     textReplaceWindow.Focus();
 
                     if (textReplaceWindow.DialogResult == DialogResult.Cancel)      //If the user quits/closes the program.
-                    {
-                        wordApplication.Quit(WdSaveOptions.wdPromptToSaveChanges);
-
                         this.ShowDialog();
-                    }
                 }
                 catch (Exception ex)
                 {

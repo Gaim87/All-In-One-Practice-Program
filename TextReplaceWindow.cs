@@ -60,7 +60,14 @@ namespace All_In_One_Practice_Program
         {
             //wordApp.Selection.Find.Replacement.ClearFormatting();
             //wordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString(), null, null, null, null, null, null, null, null, textBoxReplacementText.Text.ToString(), WdReplace.wdReplaceAll);
-            wordApp.Selection.Text = textBoxReplacementText.Text.ToString();    //Σημείωση ότι το άλλο αντικαθιστούσε το προηγούμενο...
+            wordApp.Selection.Text = textBoxReplacementText.Text.ToString();    //You, normally, replace text with the code in the above lines, but it would replace the previously-found text and not the one that was selected.
+                                                                                //Couldn't fix it, so I used this way instead.
+        }
+
+        private void buttonQuitBoth_Click(object sender, EventArgs e)
+        {
+            wordApp.Quit(WdSaveOptions.wdPromptToSaveChanges);
+            this.DialogResult = DialogResult.Cancel;
         }
     }
-}//Να ρωτάει αν θες να κλείσεις και το έγγραφο
+}   //Να γράψω κώδικα για το Replace All

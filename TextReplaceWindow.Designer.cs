@@ -34,10 +34,11 @@ namespace All_In_One_Practice_Program
             this.textBoxTextToBeReplaced = new System.Windows.Forms.TextBox();
             this.textBoxReplacementText = new System.Windows.Forms.TextBox();
             this.buttonReplaceText = new System.Windows.Forms.Button();
-            this.buttonQuit = new System.Windows.Forms.Button();
+            this.buttonQuitThis = new System.Windows.Forms.Button();
             this.buttonFindNext = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonFindPrevious = new System.Windows.Forms.Button();
+            this.buttonQuitBoth = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -79,7 +80,7 @@ namespace All_In_One_Practice_Program
             // buttonReplaceText
             // 
             this.buttonReplaceText.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReplaceText.Location = new System.Drawing.Point(215, 367);
+            this.buttonReplaceText.Location = new System.Drawing.Point(90, 358);
             this.buttonReplaceText.Name = "buttonReplaceText";
             this.buttonReplaceText.Size = new System.Drawing.Size(137, 49);
             this.buttonReplaceText.TabIndex = 4;
@@ -87,16 +88,16 @@ namespace All_In_One_Practice_Program
             this.buttonReplaceText.UseVisualStyleBackColor = true;
             this.buttonReplaceText.Click += new System.EventHandler(this.buttonReplaceText_Click);
             // 
-            // buttonQuit
+            // buttonQuitThis
             // 
-            this.buttonQuit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonQuit.Location = new System.Drawing.Point(649, 367);
-            this.buttonQuit.Name = "buttonQuit";
-            this.buttonQuit.Size = new System.Drawing.Size(112, 49);
-            this.buttonQuit.TabIndex = 5;
-            this.buttonQuit.Text = "Quit";
-            this.buttonQuit.UseVisualStyleBackColor = true;
+            this.buttonQuitThis.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonQuitThis.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonQuitThis.Location = new System.Drawing.Point(499, 342);
+            this.buttonQuitThis.Name = "buttonQuitThis";
+            this.buttonQuitThis.Size = new System.Drawing.Size(192, 80);
+            this.buttonQuitThis.TabIndex = 5;
+            this.buttonQuitThis.Text = "Quit This Program";
+            this.buttonQuitThis.UseVisualStyleBackColor = true;
             // 
             // buttonFindNext
             // 
@@ -112,7 +113,7 @@ namespace All_In_One_Practice_Program
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(394, 367);
+            this.button1.Location = new System.Drawing.Point(269, 358);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 49);
             this.button1.TabIndex = 7;
@@ -130,15 +131,28 @@ namespace All_In_One_Practice_Program
             this.buttonFindPrevious.UseVisualStyleBackColor = true;
             this.buttonFindPrevious.Click += new System.EventHandler(this.buttonFindPrevious_Click);
             // 
+            // buttonQuitBoth
+            // 
+            this.buttonQuitBoth.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonQuitBoth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.buttonQuitBoth.Location = new System.Drawing.Point(720, 342);
+            this.buttonQuitBoth.Name = "buttonQuitBoth";
+            this.buttonQuitBoth.Size = new System.Drawing.Size(192, 80);
+            this.buttonQuitBoth.TabIndex = 9;
+            this.buttonQuitBoth.Text = "Quit Both Programs";
+            this.buttonQuitBoth.UseVisualStyleBackColor = true;
+            this.buttonQuitBoth.Click += new System.EventHandler(this.buttonQuitBoth_Click);
+            // 
             // TextReplaceWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 450);
+            this.Controls.Add(this.buttonQuitBoth);
             this.Controls.Add(this.buttonFindPrevious);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonFindNext);
-            this.Controls.Add(this.buttonQuit);
+            this.Controls.Add(this.buttonQuitThis);
             this.Controls.Add(this.buttonReplaceText);
             this.Controls.Add(this.textBoxReplacementText);
             this.Controls.Add(this.textBoxTextToBeReplaced);
@@ -159,9 +173,10 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.TextBox textBoxTextToBeReplaced;
         private System.Windows.Forms.TextBox textBoxReplacementText;
         private System.Windows.Forms.Button buttonReplaceText;
-        private System.Windows.Forms.Button buttonQuit;
+        private System.Windows.Forms.Button buttonQuitThis;
         private System.Windows.Forms.Button buttonFindNext;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonFindPrevious;
+        private System.Windows.Forms.Button buttonQuitBoth;
     }
 }
