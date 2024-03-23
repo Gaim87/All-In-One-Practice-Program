@@ -37,7 +37,8 @@ namespace All_In_One_Practice_Program
                     Range rng = selectedDocument.Content;
                     TextReplaceWindow textReplaceWindow = new TextReplaceWindow();      //A new, second form/window for performing the actual word replacement.
 
-                    textReplaceWindow.wordApp = wordApplication;
+                    textReplaceWindow.WordApp = wordApplication;
+                    textReplaceWindow.DocumentContents = rng;
 
                     this.Hide();
                     textReplaceWindow.ShowDialog();

@@ -13,7 +13,9 @@ namespace All_In_One_Practice_Program
 {
     public partial class TextReplaceWindow : Form
     {
-        public Microsoft.Office.Interop.Word.Application wordApp { get; set; }
+        public Microsoft.Office.Interop.Word.Application WordApp { get; set; }
+        public Range DocumentContents { get; set; }
+
 
         public TextReplaceWindow()
         {
@@ -32,17 +34,19 @@ namespace All_In_One_Practice_Program
 
         private void FindNext()
         {
-            wordApp.Selection.Find.ClearFormatting();                                       //Resets the search criteria (they are cumulative).
-            wordApp.Selection.Find.Forward = true;                                          //Searches/Finds the next word towards the end of the document.
-            wordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString());        //The actual search.
-            wordApp.Selection.Find.Wrap = WdFindWrap.wdFindContinue;                        //When it finds the last match in the document, it restarts/continues searching from the first match. Respectively, when it finds the first match,
+            WordApp.Selection.Find.ClearFormatting();                                       //Resets the search criteria (they are cumulative).
+            WordApp.Selection.Find.Forward = true;                                          //Searches/Finds the next word towards the end of the document.
+            WordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString());        //The actual search.
+            WordApp.Selection.Find.Wrap = WdFindWrap.wdFindContinue;                        //When it finds the last match in the document, it restarts/continues searching from the first match. Respectively, when it finds the first match,
                                                                                             //it moves to the last one.
         }
 
-        private void FindPrevious()
+        private void FindPrevious() //Find object properties included here as well, in case the user presses "Find Previous" first.
         {
-            wordApp.Selection.Find.Forward = false;                                         //Searches/Finds the next word towards the begining of the document.
-            wordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString());        //The actual search.
+            WordApp.Selection.Find.Forward = false;                                         //Searches/Finds the next word towards the begining of the document.
+            WordApp.Selection.Find.Wrap = WdFindWrap.wdFindContinue;                        //When it finds the last match in the document, it restarts/continues searching from the first match. Respectively, when it finds the first match,
+                                                                                            //it moves to the last one.
+            WordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString());        //The actual search.
         }
 
         private void buttonFindPrevious_Click(object sender, EventArgs e)
@@ -60,14 +64,27 @@ namespace All_In_One_Practice_Program
         {
             //wordApp.Selection.Find.Replacement.ClearFormatting();
             //wordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString(), null, null, null, null, null, null, null, null, textBoxReplacementText.Text.ToString(), WdReplace.wdReplaceAll);
-            wordApp.Selection.Text = textBoxReplacementText.Text.ToString();    //You, normally, replace text with the code in the above lines, but it would replace the previously-found text and not the one that was selected.
+            WordApp.Selection.Text = textBoxReplacementText.Text.ToString();    //You, normally, replace text with the code in the above lines, but it would replace the previously-found text and not the one that was selected.
                                                                                 //Couldn't fix it, so I used this way instead.
         }
 
         private void buttonQuitBoth_Click(object sender, EventArgs e)
         {
-            wordApp.Quit(WdSaveOptions.wdPromptToSaveChanges);
+            WordApp.Quit(WdSaveOptions.wdPromptToSaveChanges);
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void buttonReplaceAll_Click(object sender, EventArgs e) //Find object properties included here as well, in case the user presses "Find Previous" first.
+        {
+            DocumentContents.Find.ClearFormatting();        //Used a Range object instead of a Selection one, because the former does not change the selection (i.e., ther cursor does not move to the selected/found text).
+            DocumentContents.Find.Forward = true;                                          //Resets the search criteria (they are cumulative).
+            DocumentContents.Find.Wrap = WdFindWrap.wdFindContinue;                        //When it finds the last match in the document, it restarts/continues searching from the first match. Respectively, when it finds the first match,
+                                                                                            //it moves to the last one. Included here as well, in case the user presses "Replace All" first.
+
+            while (DocumentContents.Find.Execute(textBoxTextToBeReplaced.Text.ToString())) //The actual search.
+            {
+                DocumentContents.Text = textBoxReplacementText.Text.ToString();
+            }
+        }
     }
-}   //Να γράψω κώδικα για το Replace All
+}

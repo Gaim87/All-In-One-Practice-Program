@@ -36,7 +36,7 @@ namespace All_In_One_Practice_Program
             this.buttonReplaceText = new System.Windows.Forms.Button();
             this.buttonQuitThis = new System.Windows.Forms.Button();
             this.buttonFindNext = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonReplaceAll = new System.Windows.Forms.Button();
             this.buttonFindPrevious = new System.Windows.Forms.Button();
             this.buttonQuitBoth = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -110,15 +110,16 @@ namespace All_In_One_Practice_Program
             this.buttonFindNext.UseVisualStyleBackColor = true;
             this.buttonFindNext.Click += new System.EventHandler(this.buttonFindNextWord_Click);
             // 
-            // button1
+            // buttonReplaceAll
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(269, 358);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 49);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Replace All";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonReplaceAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReplaceAll.Location = new System.Drawing.Point(269, 358);
+            this.buttonReplaceAll.Name = "buttonReplaceAll";
+            this.buttonReplaceAll.Size = new System.Drawing.Size(197, 49);
+            this.buttonReplaceAll.TabIndex = 7;
+            this.buttonReplaceAll.Text = "Replace All";
+            this.buttonReplaceAll.UseVisualStyleBackColor = true;
+            this.buttonReplaceAll.Click += new System.EventHandler(this.buttonReplaceAll_Click);
             // 
             // buttonFindPrevious
             // 
@@ -150,7 +151,7 @@ namespace All_In_One_Practice_Program
             this.ClientSize = new System.Drawing.Size(948, 450);
             this.Controls.Add(this.buttonQuitBoth);
             this.Controls.Add(this.buttonFindPrevious);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonReplaceAll);
             this.Controls.Add(this.buttonFindNext);
             this.Controls.Add(this.buttonQuitThis);
             this.Controls.Add(this.buttonReplaceText);
@@ -175,7 +176,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.Button buttonReplaceText;
         private System.Windows.Forms.Button buttonQuitThis;
         private System.Windows.Forms.Button buttonFindNext;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonReplaceAll;
         private System.Windows.Forms.Button buttonFindPrevious;
         private System.Windows.Forms.Button buttonQuitBoth;
     }
