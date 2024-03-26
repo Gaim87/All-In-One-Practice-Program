@@ -29,6 +29,7 @@ namespace All_In_One_Practice_Program
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxTextToBeReplaced = new System.Windows.Forms.TextBox();
@@ -39,6 +40,9 @@ namespace All_In_One_Practice_Program
             this.buttonReplaceAll = new System.Windows.Forms.Button();
             this.buttonFindPrevious = new System.Windows.Forms.Button();
             this.buttonQuitBoth = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -144,11 +148,27 @@ namespace All_In_One_Practice_Program
             this.buttonQuitBoth.UseVisualStyleBackColor = true;
             this.buttonQuitBoth.Click += new System.EventHandler(this.buttonQuitBoth_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::All_In_One_Practice_Program.Properties.Resources.check_mark;
+            this.pictureBox1.Location = new System.Drawing.Point(428, 328);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2000;
+            // 
             // TextReplaceWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 450);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.buttonQuitBoth);
             this.Controls.Add(this.buttonFindPrevious);
             this.Controls.Add(this.buttonReplaceAll);
@@ -162,6 +182,7 @@ namespace All_In_One_Practice_Program
             this.Name = "TextReplaceWindow";
             this.Text = "Replace Word Text";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,5 +200,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.Button buttonReplaceAll;
         private System.Windows.Forms.Button buttonFindPrevious;
         private System.Windows.Forms.Button buttonQuitBoth;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

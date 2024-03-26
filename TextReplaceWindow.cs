@@ -85,6 +85,18 @@ namespace All_In_One_Practice_Program
             {
                 DocumentContents.Text = textBoxReplacementText.Text.ToString();
             }
+
+            pictureBox1.Visible = true;                                                     //Check mark icon from https://clipart-library.com/clip-art/green-check-mark-icon-transparent-background-21.htm
+
+            timer1.Tick += new EventHandler(Timer1_Tick);
+
+            timer1.Start();
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+            timer1.Stop();
         }
     }
 }
