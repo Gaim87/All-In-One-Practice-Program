@@ -88,7 +88,7 @@ namespace All_In_One_Practice_Program
 
             pictureBox1.Visible = true;                                                     //Check mark icon from https://clipart-library.com/clip-art/green-check-mark-icon-transparent-background-21.htm
 
-            timer1.Tick += new EventHandler(Timer1_Tick);
+            timer1.Tick += new EventHandler(Timer1_Tick);               //The event that is performed every time the Tick event is raised.
 
             timer1.Start();
         }
@@ -96,7 +96,7 @@ namespace All_In_One_Practice_Program
         private void Timer1_Tick(object sender, EventArgs e)
         {
             pictureBox1.Visible = false;
-            timer1.Stop();
+            timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
         }
     }
 }
