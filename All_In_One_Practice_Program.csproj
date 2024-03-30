@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileRenameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileRenameForm.Designer.cs">
+      <DependentUpon>FileRenameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     <Compile Include="TextReplaceWindow.Designer.cs">
       <DependentUpon>TextReplaceWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FileRenameForm.resx">
+      <DependentUpon>FileRenameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
