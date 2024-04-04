@@ -10,3 +10,4 @@ D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Prac
 D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.pdb
 D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.csproj.ResolveComReference.cache
 D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.TextReplaceWindow.resources
+D:\Programming\My Programs\All_In_One_Practice_Program\obj\Debug\All_In_One_Practice_Program.FileRenameForm.resources

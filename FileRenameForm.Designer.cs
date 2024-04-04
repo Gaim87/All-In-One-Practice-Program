@@ -29,6 +29,7 @@ namespace All_In_One_Practice_Program
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -36,9 +37,11 @@ namespace All_In_One_Practice_Program
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonChooseFile = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label2
@@ -65,7 +68,7 @@ namespace All_In_One_Practice_Program
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 91);
+            this.label4.Location = new System.Drawing.Point(39, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(187, 20);
             this.label4.TabIndex = 3;
@@ -102,18 +105,20 @@ namespace All_In_One_Practice_Program
             this.textBox3.Size = new System.Drawing.Size(310, 22);
             this.textBox3.TabIndex = 7;
             // 
-            // button1
+            // buttonChooseFile
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(895, 28);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(245, 83);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Choose file or directory";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonChooseFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChooseFile.Location = new System.Drawing.Point(895, 28);
+            this.buttonChooseFile.Name = "buttonChooseFile";
+            this.buttonChooseFile.Size = new System.Drawing.Size(245, 83);
+            this.buttonChooseFile.TabIndex = 8;
+            this.buttonChooseFile.Text = "Choose file(s)";
+            this.buttonChooseFile.UseVisualStyleBackColor = true;
+            this.buttonChooseFile.Click += new System.EventHandler(this.buttonChooseFile_Click);
             // 
             // button2
             // 
+            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(895, 475);
             this.button2.Name = "button2";
@@ -128,8 +133,14 @@ namespace All_In_One_Practice_Program
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(43, 141);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(429, 308);
+            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBox1.Size = new System.Drawing.Size(595, 356);
             this.listBox1.TabIndex = 10;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = true;
             // 
             // FileRenameForm
             // 
@@ -138,7 +149,7 @@ namespace All_In_One_Practice_Program
             this.ClientSize = new System.Drawing.Size(1277, 573);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonChooseFile);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
@@ -162,8 +173,10 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonChooseFile;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

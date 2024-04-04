@@ -45,7 +45,10 @@ namespace All_In_One_Practice_Program
                     textReplaceWindow.Focus();
 
                     if (textReplaceWindow.DialogResult == DialogResult.Cancel)      //If the user quits/closes the program.
-                        this.ShowDialog();
+                    {
+                        this.Show();
+                        textReplaceWindow.Dispose();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -53,5 +56,24 @@ namespace All_In_One_Practice_Program
                 }
             }
         }   //Tried making it work with an already open document, but did not succeed.
+
+        private void buttonRenameFiles_Click(object sender, EventArgs e)        //The button that opens the program for renaming files.
+        {
+            FileRenameForm fileRenameForm = new FileRenameForm();
+
+            this.Hide();
+            fileRenameForm.ShowDialog();
+
+            if (fileRenameForm.DialogResult == DialogResult.Cancel)             //If the user quits/closes the program.
+            {
+                this.Show();
+                fileRenameForm.Dispose();
+            }
+        }
+
+        private void buttonQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
