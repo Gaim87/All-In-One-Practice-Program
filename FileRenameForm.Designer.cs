@@ -33,7 +33,7 @@ namespace All_In_One_Practice_Program
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxRenameFile = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -42,6 +42,8 @@ namespace All_In_One_Practice_Program
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.renameButton = new System.Windows.Forms.Button();
+            this.partiallyRenameButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -74,12 +76,12 @@ namespace All_In_One_Practice_Program
             this.label4.TabIndex = 3;
             this.label4.Text = "Select one or more files";
             // 
-            // textBox1
+            // textBoxRenameFile
             // 
-            this.textBox1.Location = new System.Drawing.Point(895, 191);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(310, 22);
-            this.textBox1.TabIndex = 4;
+            this.textBoxRenameFile.Location = new System.Drawing.Point(895, 191);
+            this.textBoxRenameFile.Name = "textBoxRenameFile";
+            this.textBoxRenameFile.Size = new System.Drawing.Size(310, 22);
+            this.textBoxRenameFile.TabIndex = 4;
             // 
             // textBox2
             // 
@@ -120,7 +122,7 @@ namespace All_In_One_Practice_Program
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(895, 475);
+            this.button2.Location = new System.Drawing.Point(895, 472);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(128, 70);
             this.button2.TabIndex = 9;
@@ -134,7 +136,7 @@ namespace All_In_One_Practice_Program
             this.listBox1.Location = new System.Drawing.Point(43, 141);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(595, 356);
+            this.listBox1.Size = new System.Drawing.Size(595, 404);
             this.listBox1.TabIndex = 10;
             // 
             // openFileDialog1
@@ -142,18 +144,39 @@ namespace All_In_One_Practice_Program
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Multiselect = true;
             // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(1236, 191);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(149, 23);
+            this.renameButton.TabIndex = 11;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            // 
+            // partiallyRenameButton
+            // 
+            this.partiallyRenameButton.Location = new System.Drawing.Point(1236, 406);
+            this.partiallyRenameButton.Name = "partiallyRenameButton";
+            this.partiallyRenameButton.Size = new System.Drawing.Size(149, 23);
+            this.partiallyRenameButton.TabIndex = 12;
+            this.partiallyRenameButton.Text = "Rename";
+            this.partiallyRenameButton.UseVisualStyleBackColor = true;
+            // 
             // FileRenameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1277, 573);
+            this.ClientSize = new System.Drawing.Size(1427, 637);
+            this.Controls.Add(this.partiallyRenameButton);
+            this.Controls.Add(this.renameButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonChooseFile);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxRenameFile);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -169,7 +192,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxRenameFile;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
@@ -178,5 +201,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button renameButton;
+        private System.Windows.Forms.Button partiallyRenameButton;
     }
 }
