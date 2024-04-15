@@ -32,9 +32,6 @@ namespace All_In_One_Practice_Program
 
                     if (selectedFiles.Length == 1)                                      //If the user selected only one file, it is automatically selected in the list box.
                         listBox1.SelectedItem = listBox1.Items[0];
-
-                    toolTip1.SetToolTip(listBox1, listBox1.SelectedItem.ToString());    //Sets a tool tip that shows the selected file's name. Useful when the path or the file's name are longer than the list box's margins.
-                                                                                        //It shows the selected file's name no matter where you hover inside the list box.
                 }
                 catch (Exception ex)
                 {
@@ -45,26 +42,37 @@ namespace All_In_One_Practice_Program
         private void RenameFile()
         {
             string oldFilePath = listBox1.SelectedItem.ToString();                          //E.g., "D:\Docs\Personal\Notes_from_work.pdf"
-            int backslashLastOccurrence = oldFilePath.LastIndexOf("\\");                    //The last occurrence of the backslash in the path is where the file's name starts.
+            int backslashLastOccurrence = oldFilePath.LastIndexOf("\\");                    //The last occurrence of the backslash (\) in the path is where the file's name starts.
+            int dotLastOccurrence = oldFilePath.LastIndexOf(".");                           //The last occurrence of the dot (.) in the path is where the filename extension starts.
+
             string oldFileName = oldFilePath.Substring(backslashLastOccurrence + 1);        //+ 1 because we don't want to include the backslash.
-            string newFileName = oldFileName.Replace(oldFileName, textBoxRenameFile.Text);  //I don't rename the file using the variable for the whole path, because the file's name may be identical to a preceding folder's name, e.g.
-                                                                                            //"D:\Docs\Notes_from_work\Notes_from_work.pdf", and in this case, the .Replace method will replace all instances of the given string
+            string filenameExtension = oldFilePath.Substring(dotLastOccurrence);            //This time, we want to include the dot.
+            string newFileName = oldFileName.Replace(oldFileName, textBoxRenameFile.Text);  //I don't rename the file using the variable for the whole path ("oldFilePath"), because the file's name may be identical to a preceding folder's
+                                                                                            //name, e.g. "D:\Docs\Notes_from_work\Notes_from_work.pdf", and in this case, the .Replace method will replace all instances of the given string
                                                                                             //(including the folder) and we will end up changing the file's path.
 
-            //Removes the part of the file's path that is the old name and inserts the new name at the same position.
-            string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, newFileName);
+            //We remove the old file's name from the original path, then insert the new name at the same position and add the filename extension, because the Remove method deletes everything starting from the position you supply up to
+            //the string's end.
+            string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, newFileName) + filenameExtension;
 
-            if (listBox1.SelectedIndices.Count == 1)
-            {
-                File.Move(oldFilePath, newFilePath);                //Να μην παίρνει και την επέκταση του αρχείου μαζί... Έως την τελευταία τελεία. - Ξανά last index του ονόματος, για να αλλάξει μόνο αρχείο;
-            }
+            File.Move(oldFilePath, newFilePath);    //The actual renaming. We "move" the file elsewhere while providing a new name (it just happens we move it to the same place it was before...).
+
+            listBox1.Items[0] = newFilePath;
         }
 
         private void renameButton_Click(object sender, EventArgs e)
         {
-            RenameFile();
-            listBox1.Invalidate();          //Refreshes the list box, so that it displays the new file name(s).
+            if (listBox1.SelectedIndices.Count == 1)
+                RenameFile();
+        }
+
+        private void listBox1_MouseHover(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+                toolTip1.SetToolTip(listBox1, listBox1.SelectedItem.ToString());    //Sets a tool tip that shows the selected file's name. Useful when the path or the file's name are longer than the list box's margins.
+                                                                                    //It shows the selected file's name no matter where you hover inside the list box.
         }
     }
 }
-//File.Move στο ίδιο dir, check mark ότι πέτυχε. Για όλα τα αρχεία του φακέλου ή και με if για συγκεκριμένα. Contains και IndexOf, για μετονομασία του αρχείου.
+//Με if για partially. Να μετονομάζει σε (1), (2), αν διαλέξεις πολλά και κάνεις κανονικά rename και να κάνει το ίδιο, αν διαλέξεις πολλά για μερικό rename και τυχαίνει τα γύρω γύρω να είναι ίδια, οπότε θα είναι ίδια και τα τελικά
+//ονόματα.
