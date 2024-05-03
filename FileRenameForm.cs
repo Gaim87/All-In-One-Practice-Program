@@ -73,10 +73,10 @@ namespace All_In_One_Practice_Program
             int numberOfFilesToRename = filesToRename.Count;        //After you rename a file, it is de-selected from the listbox, because of the line "listBox1.Items[filesToRename[i]] = newFilePath;", which displays the new, correct file
                                                                     //name. This causes the ListBox.SelectedIndexCollection filesToRename method parameter to lose one of its objects, so I save the parameter's number of objects in a
                                                                     //separate cariable, so that the for statement works correctly. (I was using "i < filesToRename.Count" before and the count was diminishing after each loop)
-            int[] array = new int[numberOfFilesToRename];           //Created for the same reason as above. Program would crash.
+            int[] selectedListboxIndices = new int[numberOfFilesToRename];           //Created for the same reason as above. Program would crash.
 
             for (int i = 0; i < numberOfFilesToRename; i += 1)
-                array[i] = filesToRename[i];
+                selectedListboxIndices[i] = filesToRename[i];
 
             string helperString = " - Copy";
             //int[] selectedFilesIndex = new int[filesToRename.Count];
@@ -86,7 +86,7 @@ namespace All_In_One_Practice_Program
 
             for (int i = 0; i < numberOfFilesToRename; i += 1)
             {
-                string oldFilePath = listBox1.Items[array[i]].ToString();                           //E.g., "D:\Docs\Personal\Notes_from_work.pdf". Selects the file with the specific index in the listbox.
+                string oldFilePath = listBox1.Items[selectedListboxIndices[i]].ToString();                           //E.g., "D:\Docs\Personal\Notes_from_work.pdf". Selects the file with the specific index in the listbox.
                 int backslashLastOccurrence = oldFilePath.LastIndexOf("\\");                        //The last occurrence of the backslash (\) in the path is where the file's name starts.            
                 string filenameExtension = oldFilePath.Substring(oldFilePath.LastIndexOf("."));     //We isolate the filename extension (the last occurrence of the dot (.) in the path is where it starts).
 
@@ -96,16 +96,16 @@ namespace All_In_One_Practice_Program
                 string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + filenameExtension;
 
                 //If the new file name already exists in the parent folder of the file-to-be-renamed, the string " - Copy" is added to the new name to differentiate them.
-                if ((Directory.GetFiles(Path.GetDirectoryName(oldFilePath))).Contains(newFilePath))
+                while ((Directory.GetFiles(Path.GetDirectoryName(oldFilePath))).Contains(newFilePath))
                 {
                     newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + helperString + filenameExtension;
 
-                    File.Move(oldFilePath, newFilePath);    //The actual renaming. We "move" the file elsewhere while providing a new name (it just happens we move it to the same place it was before...).
-
-                    helperString = String.Concat(Enumerable.Repeat(" - Copy", i+2));
+                    helperString += " - Copy";
                 }
 
-                listBox1.Items[array[i]] = newFilePath;        //The correct name is, now, displayed in the list box. Used the "array" variable for the same reason stated in line /////////////////////////////108.
+                File.Move(oldFilePath, newFilePath);    //The actual renaming. We "move" the file elsewhere while providing a new name (it just happens we move it to the same place it was before...).
+
+                listBox1.Items[selectedListboxIndices[i]] = newFilePath;        //The correct name is, now, displayed in the list box. Used the "array" variable for the same reason stated in line /////////////////////////////108.
             }
         }
 
@@ -128,4 +128,3 @@ namespace All_In_One_Practice_Program
     }
 }
 //Να μετονομάζει σε (1), (2) και για μερικό rename, αν τυχαίνει τα γύρω γύρω να είναι ίδια, οπότε θα είναι ίδια και τα τελικά ονόματα. + Να δουλεύει με Enter. +
-//Όταν υπάρχει ήδη το αρχείο, σκάει. +  Για επόμενο push, διόρθωσα το όνομα που δίνει στο αρχείο όταν δίνεις σε πολλά αρχεία το ίδιο όνομα και έκανα να αδειάζει το list box όταν πατάς select.
