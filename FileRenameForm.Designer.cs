@@ -34,16 +34,16 @@ namespace All_In_One_Practice_Program
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxRenameFile = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxPartialRenameOrigText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxPartialRenameFinalText = new System.Windows.Forms.TextBox();
             this.buttonChooseFile = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.renameButton = new System.Windows.Forms.Button();
-            this.partiallyRenameButton = new System.Windows.Forms.Button();
+            this.buttonPartiallyRename = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -82,13 +82,14 @@ namespace All_In_One_Practice_Program
             this.textBoxRenameFile.Name = "textBoxRenameFile";
             this.textBoxRenameFile.Size = new System.Drawing.Size(310, 22);
             this.textBoxRenameFile.TabIndex = 4;
+            this.textBoxRenameFile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRenameFile_KeyPress);
             // 
-            // textBox2
+            // textBoxPartialRenameOrigText
             // 
-            this.textBox2.Location = new System.Drawing.Point(895, 296);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(310, 22);
-            this.textBox2.TabIndex = 5;
+            this.textBoxPartialRenameOrigText.Location = new System.Drawing.Point(895, 296);
+            this.textBoxPartialRenameOrigText.Name = "textBoxPartialRenameOrigText";
+            this.textBoxPartialRenameOrigText.Size = new System.Drawing.Size(310, 22);
+            this.textBoxPartialRenameOrigText.TabIndex = 5;
             // 
             // label1
             // 
@@ -100,12 +101,12 @@ namespace All_In_One_Practice_Program
             this.label1.TabIndex = 6;
             this.label1.Text = "to:";
             // 
-            // textBox3
+            // textBoxPartialRenameFinalText
             // 
-            this.textBox3.Location = new System.Drawing.Point(895, 406);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(310, 22);
-            this.textBox3.TabIndex = 7;
+            this.textBoxPartialRenameFinalText.Location = new System.Drawing.Point(895, 406);
+            this.textBoxPartialRenameFinalText.Name = "textBoxPartialRenameFinalText";
+            this.textBoxPartialRenameFinalText.Size = new System.Drawing.Size(310, 22);
+            this.textBoxPartialRenameFinalText.TabIndex = 7;
             // 
             // buttonChooseFile
             // 
@@ -155,28 +156,29 @@ namespace All_In_One_Practice_Program
             this.renameButton.UseVisualStyleBackColor = true;
             this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
             // 
-            // partiallyRenameButton
+            // buttonPartiallyRename
             // 
-            this.partiallyRenameButton.Location = new System.Drawing.Point(1236, 406);
-            this.partiallyRenameButton.Name = "partiallyRenameButton";
-            this.partiallyRenameButton.Size = new System.Drawing.Size(149, 23);
-            this.partiallyRenameButton.TabIndex = 12;
-            this.partiallyRenameButton.Text = "Rename";
-            this.partiallyRenameButton.UseVisualStyleBackColor = true;
+            this.buttonPartiallyRename.Location = new System.Drawing.Point(1236, 406);
+            this.buttonPartiallyRename.Name = "buttonPartiallyRename";
+            this.buttonPartiallyRename.Size = new System.Drawing.Size(149, 23);
+            this.buttonPartiallyRename.TabIndex = 12;
+            this.buttonPartiallyRename.Text = "Rename";
+            this.buttonPartiallyRename.UseVisualStyleBackColor = true;
+            this.buttonPartiallyRename.Click += new System.EventHandler(this.buttonPartiallyRename_Click);
             // 
             // FileRenameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1427, 637);
-            this.Controls.Add(this.partiallyRenameButton);
+            this.Controls.Add(this.buttonPartiallyRename);
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.buttonChooseFile);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxPartialRenameFinalText);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxPartialRenameOrigText);
             this.Controls.Add(this.textBoxRenameFile);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -194,15 +196,15 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxRenameFile;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxPartialRenameOrigText;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxPartialRenameFinalText;
         private System.Windows.Forms.Button buttonChooseFile;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button renameButton;
-        private System.Windows.Forms.Button partiallyRenameButton;
+        private System.Windows.Forms.Button buttonPartiallyRename;
     }
 }
