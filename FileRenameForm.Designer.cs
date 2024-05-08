@@ -44,6 +44,8 @@ namespace All_In_One_Practice_Program
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.renameButton = new System.Windows.Forms.Button();
             this.buttonPartiallyRename = new System.Windows.Forms.Button();
+            this.labelWrongPartialRename = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label2
@@ -166,11 +168,27 @@ namespace All_In_One_Practice_Program
             this.buttonPartiallyRename.UseVisualStyleBackColor = true;
             this.buttonPartiallyRename.Click += new System.EventHandler(this.buttonPartiallyRename_Click);
             // 
+            // labelWrongPartialRename
+            // 
+            this.labelWrongPartialRename.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelWrongPartialRename.Location = new System.Drawing.Point(1178, 450);
+            this.labelWrongPartialRename.Name = "labelWrongPartialRename";
+            this.labelWrongPartialRename.Size = new System.Drawing.Size(207, 44);
+            this.labelWrongPartialRename.TabIndex = 13;
+            this.labelWrongPartialRename.Text = "The chosen file(s) does not contain the text you provided!";
+            this.labelWrongPartialRename.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 4000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FileRenameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1427, 637);
+            this.Controls.Add(this.labelWrongPartialRename);
             this.Controls.Add(this.buttonPartiallyRename);
             this.Controls.Add(this.renameButton);
             this.Controls.Add(this.listBox1);
@@ -206,5 +224,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button renameButton;
         private System.Windows.Forms.Button buttonPartiallyRename;
+        private System.Windows.Forms.Label labelWrongPartialRename;
+        private System.Windows.Forms.Timer timer1;
     }
 }
