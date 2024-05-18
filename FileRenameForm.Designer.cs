@@ -84,7 +84,7 @@ namespace All_In_One_Practice_Program
             this.textBoxRenameFile.Name = "textBoxRenameFile";
             this.textBoxRenameFile.Size = new System.Drawing.Size(310, 22);
             this.textBoxRenameFile.TabIndex = 4;
-            this.textBoxRenameFile.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxRenameFile_KeyPress);
+            this.textBoxRenameFile.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxRenameFile_KeyUp);
             // 
             // textBoxPartialRenameOrigText
             // 
@@ -92,6 +92,7 @@ namespace All_In_One_Practice_Program
             this.textBoxPartialRenameOrigText.Name = "textBoxPartialRenameOrigText";
             this.textBoxPartialRenameOrigText.Size = new System.Drawing.Size(310, 22);
             this.textBoxPartialRenameOrigText.TabIndex = 5;
+            this.textBoxPartialRenameOrigText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPartialRenameOrigText_KeyUp);
             // 
             // label1
             // 
@@ -109,6 +110,7 @@ namespace All_In_One_Practice_Program
             this.textBoxPartialRenameFinalText.Name = "textBoxPartialRenameFinalText";
             this.textBoxPartialRenameFinalText.Size = new System.Drawing.Size(310, 22);
             this.textBoxPartialRenameFinalText.TabIndex = 7;
+            this.textBoxPartialRenameFinalText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPartialRenameFinalText_KeyUp);
             // 
             // buttonChooseFile
             // 

@@ -27,6 +27,11 @@ namespace All_In_One_Practice_Program
             FindNext();
         }
 
+        private void buttonFindPrevious_Click(object sender, EventArgs e)
+        {
+            FindPrevious();
+        }
+
         private void textBoxTextToBeReplaced_TextChanged(object sender, EventArgs e)
         {
             FindNext();
@@ -49,11 +54,6 @@ namespace All_In_One_Practice_Program
             WordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString());        //The actual search.
         }
 
-        private void buttonFindPrevious_Click(object sender, EventArgs e)
-        {
-            FindPrevious();
-        }
-
         private void textBoxTextToBeReplaced_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.Equals((char)Keys.Enter))
@@ -66,12 +66,6 @@ namespace All_In_One_Practice_Program
             //wordApp.Selection.Find.Execute(textBoxTextToBeReplaced.Text.ToString(), null, null, null, null, null, null, null, null, textBoxReplacementText.Text.ToString(), WdReplace.wdReplaceAll);
             WordApp.Selection.Text = textBoxReplacementText.Text.ToString();    //You, normally, replace text with the code in the above lines, but it would replace the previously-found text and not the one that was selected.
                                                                                 //Couldn't fix it, so I used this way instead.
-        }
-
-        private void buttonQuitBoth_Click(object sender, EventArgs e)
-        {
-            WordApp.Quit(WdSaveOptions.wdPromptToSaveChanges);
-            this.DialogResult = DialogResult.Cancel;
         }
 
         private void buttonReplaceAll_Click(object sender, EventArgs e) //Find object properties included here as well, in case the user presses "Find Previous" first.
@@ -95,6 +89,12 @@ namespace All_In_One_Practice_Program
         {
             pictureBox1.Visible = false;
             timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
+        }
+
+        private void buttonQuitBoth_Click(object sender, EventArgs e)
+        {
+            WordApp.Quit(WdSaveOptions.wdPromptToSaveChanges);
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
