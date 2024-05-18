@@ -199,5 +199,10 @@ namespace All_In_One_Practice_Program
             labelWrongPartialRename.Visible = false;
             timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
         }
+
+        private void PartiallyRenameManyFiles()
+        {
+
+        }
     }
 }
