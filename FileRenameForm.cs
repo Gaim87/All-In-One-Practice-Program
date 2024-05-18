@@ -162,6 +162,8 @@ namespace All_In_One_Practice_Program
                 labelWrongPartialRename.ForeColor = Color.Red;
                 labelWrongPartialRename.Visible = true;
 
+                timer1.Tick += new EventHandler(timer1_Tick);               //The event that is performed every time the Tick event is raised.
+
                 timer1.Start();
                 return;
             }
