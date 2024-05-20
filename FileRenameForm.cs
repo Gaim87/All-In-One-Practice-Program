@@ -176,7 +176,7 @@ namespace All_In_One_Practice_Program
 
             //If the text to be changed is included more than once in the original filename, this method only informs us about the position of its first occurence. If the user wants to replace all occurrences, he'll have to partially
             //rename the file again or perform normal renaming.
-            int textToBeChangedFirstOccurence = oldFilename.IndexOf(textBoxPartialRenameOrigText.Text);            
+            int textToBeChangedFirstOccurence = oldFilename.IndexOf(textBoxPartialRenameOrigText.Text);
             string newFilePath;
             string helperString = " - Copy";
 
@@ -268,5 +268,6 @@ namespace All_In_One_Practice_Program
                 textBoxPartialRenameFinalText.Clear();
             }
         }
-    }//Να μη μετονομάζει σε Copy, όταν το αρχείο υπάρχει ήδη. Να βγάζει μόνο μήνυμα ότι υπάρχει ήδη.
+    }
+}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". Χάνεις και το πρωτότυπο έτσι.
  //NEXT ίδια αρχεία
