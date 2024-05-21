@@ -76,6 +76,18 @@ namespace All_In_One_Practice_Program
             //"D:\Docs\Notes_from_work\Notes_from_work.pdf").
             string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + filenameExtension;
             string helperString = " - Copy";
+            string oldFilename = oldFilePath.Remove(oldFilePath.LastIndexOf(".")).Substring(backslashLastOccurrence + 1);    //We remove the filename extension and save the part after the last backslash occurrence.
+
+            //If the user tries to give a file the filename it already has, we leave it as it is.
+            if (oldFilename.Equals(textBoxRenameFile.Text))
+            {
+                labelSameFilenameGiven.Text += textBoxRenameFile.Text + "\"";
+                labelSameFilenameGiven.Visible = true;
+
+                textBoxRenameFile.Clear();
+                timer1.Start();
+                return;
+            }
 
             //If the new file name already exists in the parent folder of the file-to-be-renamed, the string " - Copy" is added to the new name to differentiate it. Used a while loop for the (edge) case of there (e.g.) already existing both
             //a "Name.txt" and a "Name - Copy.txt" files inside the folder of the file the user wants to rename and he/she wants to rename a third, "Project.txt" file into "Name.txt". If I had used an if clause, the program would rename the
@@ -170,6 +182,8 @@ namespace All_In_One_Practice_Program
                 labelWrongPartialRename.ForeColor = Color.Red;
                 labelWrongPartialRename.Visible = true;
 
+                textBoxPartialRenameOrigText.Clear();
+                textBoxPartialRenameFinalText.Clear();
                 timer1.Start();
                 return;
             }
@@ -204,9 +218,13 @@ namespace All_In_One_Practice_Program
             textBoxPartialRenameFinalText.Clear();
         }
 
+        //Resets the labels' visibility and text.
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelWrongPartialRename.Visible = false;
+            labelSameFilenameGiven.Visible = false;
+            labelSameFilenameGiven.Text = "The selected file is already named ";
+
             timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
         }
 
@@ -231,7 +249,6 @@ namespace All_In_One_Practice_Program
                 //If the user has mistyped and wants to rename a part of the word that does not exist.
                 if (!oldFilename.Contains(textBoxPartialRenameOrigText.Text))
                 {
-                    labelWrongPartialRename.ForeColor = Color.Red;
                     labelWrongPartialRename.Visible = true;
 
                     timer1.Start();
@@ -269,5 +286,6 @@ namespace All_In_One_Practice_Program
             }
         }
     }
-}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". Χάνεις και το πρωτότυπο έτσι.
+}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". Να το κάνω για το rename many files κια να λέει "one of the files is already named...". Στο partial, να τσεκάρει αν
+//τα δύο texxt boxes περιέχουν την ίδια τιμή.
  //NEXT ίδια αρχεία
