@@ -71,7 +71,7 @@ namespace All_In_One_Practice_Program
             string filenameExtension = oldFilePath.Substring(oldFilePath.LastIndexOf("."));     //We isolate the filename extension (the last occurrence of the dot (.) in the path is where it starts).
 
             //We remove the old file's name from the original path, then insert the new name at the same position and add the filename extension, because the Remove method deletes everything starting from the position you supply up to
-            //the string's end, unless I create another variable with the file's name, calculate its length and use the method's overload.
+            //the string's end, unless we create another variable with the file's name, calculate its length and use the method's overload.
             //We also cannot use the the Replace method, because it replaces all instances of the given parameter and we may end up changing the file's path, if it has the same name with the file itself (e.g.
             //"D:\Docs\Notes_from_work\Notes_from_work.pdf").
             string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + filenameExtension;
@@ -81,8 +81,8 @@ namespace All_In_One_Practice_Program
             //If the user tries to give a file the filename it already has, we leave it as it is.
             if (oldFilename.Equals(textBoxRenameFile.Text))
             {
-                labelSameFilenameGiven.Text += textBoxRenameFile.Text + "\"";
-                labelSameFilenameGiven.Visible = true;
+                labelWrongRename.Text = "The selected file is already named \"" + textBoxRenameFile.Text + "\"";
+                labelWrongRename.Visible = true;
 
                 textBoxRenameFile.Clear();
                 timer1.Start();
@@ -113,36 +113,59 @@ namespace All_In_One_Practice_Program
                                                                     //loop)
             int[] selectedListboxIndices = new int[numberOfFilesToRename];           //Created for the same reason as above. Program would crash.
 
-            for (int i = 0; i < numberOfFilesToRename; i += 1)
+            for (int i = 0; i < numberOfFilesToRename; i += 1)      //Με if και αφού είμαστε ήδη σε for (παρακάτω), το κάνω skip αλλά πρώτα αποθηκεύω το index αλλού, ώστε να είναι επιλεγμένα, όταν τελειώσει το renaming των υπολοίπων
                 selectedListboxIndices[i] = filesToRename[i];
 
             string helperString = " - Copy";
+            int fileNotRenamedIndex = -1;
 
             for (int i = 0; i < numberOfFilesToRename; i += 1)
             {
                 string oldFilePath = listBox1.Items[selectedListboxIndices[i]].ToString();          //E.g., "D:\Docs\Personal\Notes_from_work.pdf". Selects the file with the specific index in the listbox.
                 int backslashLastOccurrence = oldFilePath.LastIndexOf("\\");                        //The last occurrence of the backslash (\) in the path is where the file's name starts.            
                 string filenameExtension = oldFilePath.Substring(oldFilePath.LastIndexOf("."));     //We isolate the filename extension (the last occurrence of the dot (.) in the path is where it starts).
+                string oldFilename = oldFilePath.Remove(oldFilePath.LastIndexOf(".")).Substring(backslashLastOccurrence + 1);    //We remove the filename extension and save the part after the last backslash occurrence.
 
-                //We remove the old file's name from the original path, then insert the new name at the same position and add the filename extension, because the Remove method deletes everything starting from the position you supply up to
-                //the string's end, unless I create another variable with the file's name, calculate its length and use the method's overload.
-                //We also cannot use the the Replace method, because it replaces all instances of the given parameter and we may end up changing the file's path, if it has the same name with the file itself (e.g.
-                //"D:\Docs\Notes_from_work\Notes_from_work.pdf").
-                string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + filenameExtension;
-
-                //If the new file name already exists in the parent folder of the file-to-be-renamed, the string " - Copy" is added to the new name to differentiate them.
-                while ((Directory.GetFiles(Path.GetDirectoryName(oldFilePath))).Contains(newFilePath))
+                //If the user tries to give a file the filename it already has, we leave it as it is, give its index number to a variable for later usage and continue renaming the rest of the files.
+                if (oldFilename.Equals(textBoxRenameFile.Text))
                 {
-                    newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + helperString + filenameExtension;
-
-                    helperString += " - Copy";
+                    fileNotRenamedIndex = selectedListboxIndices[i];
+                    continue;
                 }
+                else
+                {
+                    //We remove the old file's name from the original path, then insert the new name at the same position and add the filename extension, because the Remove method deletes everything starting from the position you supply up
+                    //to the string's end, unless we create another variable with the file's name, calculate its length and use the method's overload.
+                    //We also cannot use the the Replace method, because it replaces all instances of the given parameter and we may end up changing the file's path, if it has the same name with the file itself (e.g.
+                    //"D:\Docs\Notes_from_work\Notes_from_work.pdf").
+                    string newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + filenameExtension;
 
-                File.Move(oldFilePath, newFilePath);    //The actual renaming. We "move" the file elsewhere while providing a new name (it just happens we move it to the same place it was before...).
+                    //If the new file name already exists in the parent folder of the file-to-be-renamed, the string " - Copy" is added to the new name to differentiate them.
+                    while ((Directory.GetFiles(Path.GetDirectoryName(oldFilePath))).Contains(newFilePath))
+                    {
+                        newFilePath = oldFilePath.Remove(backslashLastOccurrence + 1).Insert(backslashLastOccurrence + 1, textBoxRenameFile.Text) + helperString + filenameExtension;
 
-                listBox1.Items[selectedListboxIndices[i]] = newFilePath;        //The correct name is, now, displayed in the list box. Used the array's variable for the same reason stated above.
-                textBoxRenameFile.Clear();
+                        helperString += " - Copy";
+                    }
+
+                    File.Move(oldFilePath, newFilePath);    //The actual renaming. We "move" the file elsewhere while providing a new name (it just happens we move it to the same place it was before...).
+
+                    listBox1.Items[selectedListboxIndices[i]] = newFilePath;        //The correct name is, now, displayed in the list box. Used the array's variable for the same reason stated above.
+                }
             }
+
+            if(fileNotRenamedIndex >= 0)                      //If the variable was given a value/If there was a file that was not renamed for the reason stated above.
+            {
+                labelWrongRename.Text = "The selected file is already named \"" + textBoxRenameFile.Text + "\"";
+                labelWrongRename.Visible = true;
+
+                listBox1.SelectedItem = -1;                         //Does not work.... 2 files are selected every time I test it.
+                listBox1.SelectedItem = fileNotRenamedIndex;
+
+                timer1.Start();
+            }
+
+            textBoxRenameFile.Clear();
         }
 
         private void buttonPartiallyRename_Click(object sender, EventArgs e)
@@ -179,7 +202,6 @@ namespace All_In_One_Practice_Program
             //If the user has mistyped and wants to rename a part of the word that does not exist.
             if (!oldFilename.Contains(textBoxPartialRenameOrigText.Text))
             {
-                labelWrongPartialRename.ForeColor = Color.Red;
                 labelWrongPartialRename.Visible = true;
 
                 textBoxPartialRenameOrigText.Clear();
@@ -222,8 +244,7 @@ namespace All_In_One_Practice_Program
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelWrongPartialRename.Visible = false;
-            labelSameFilenameGiven.Visible = false;
-            labelSameFilenameGiven.Text = "The selected file is already named ";
+            labelWrongRename.Visible = false;
 
             timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
         }
@@ -286,6 +307,6 @@ namespace All_In_One_Practice_Program
             }
         }
     }
-}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". Να το κάνω για το rename many files κια να λέει "one of the files is already named...". Στο partial, να τσεκάρει αν
-//τα δύο texxt boxes περιέχουν την ίδια τιμή.
+}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". (Να το κάνω για το rename many files και να λέει "one of the files is already named...". Στο partial, να τσεκάρει αν
+//τα δύο text boxes περιέχουν την ίδια τιμή.) + να γράψω εδώ ή στο GitHub ότι δεν έχω υπολογίσει τις περιπτώσεις που 2 αρχεία έχουν το ίδιο όνομα αλλά διαφορετική επέκταση ή να το υλοποιήσω. + να κάνει sort το listbox μετά από κάθε rename.
  //NEXT ίδια αρχεία

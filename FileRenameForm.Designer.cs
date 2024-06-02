@@ -46,7 +46,7 @@ namespace All_In_One_Practice_Program
             this.buttonPartiallyRename = new System.Windows.Forms.Button();
             this.labelWrongPartialRename = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelSameFilenameGiven = new System.Windows.Forms.Label();
+            this.labelWrongRename = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -186,24 +186,24 @@ namespace All_In_One_Practice_Program
             this.timer1.Interval = 4000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // labelSameFilenameGiven
+            // labelWrongRename
             // 
-            this.labelSameFilenameGiven.AutoSize = true;
-            this.labelSameFilenameGiven.ForeColor = System.Drawing.Color.Red;
-            this.labelSameFilenameGiven.Location = new System.Drawing.Point(895, 233);
-            this.labelSameFilenameGiven.MaximumSize = new System.Drawing.Size(310, 0);
-            this.labelSameFilenameGiven.Name = "labelSameFilenameGiven";
-            this.labelSameFilenameGiven.Size = new System.Drawing.Size(233, 17);
-            this.labelSameFilenameGiven.TabIndex = 14;
-            this.labelSameFilenameGiven.Text = "The selected file is already named \"";
-            this.labelSameFilenameGiven.Visible = false;
+            this.labelWrongRename.AutoSize = true;
+            this.labelWrongRename.ForeColor = System.Drawing.Color.Red;
+            this.labelWrongRename.Location = new System.Drawing.Point(895, 233);
+            this.labelWrongRename.MaximumSize = new System.Drawing.Size(310, 0);
+            this.labelWrongRename.Name = "labelWrongRename";
+            this.labelWrongRename.Size = new System.Drawing.Size(233, 17);
+            this.labelWrongRename.TabIndex = 14;
+            this.labelWrongRename.Text = "The selected file is already named \"";
+            this.labelWrongRename.Visible = false;
             // 
             // FileRenameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1427, 637);
-            this.Controls.Add(this.labelSameFilenameGiven);
+            this.Controls.Add(this.labelWrongRename);
             this.Controls.Add(this.labelWrongPartialRename);
             this.Controls.Add(this.buttonPartiallyRename);
             this.Controls.Add(this.renameButton);
@@ -242,6 +242,6 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.Button buttonPartiallyRename;
         private System.Windows.Forms.Label labelWrongPartialRename;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label labelSameFilenameGiven;
+        private System.Windows.Forms.Label labelWrongRename;
     }
 }
