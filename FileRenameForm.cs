@@ -127,7 +127,7 @@ namespace All_In_One_Practice_Program
                 string oldFilename = oldFilePath.Remove(oldFilePath.LastIndexOf(".")).Substring(backslashLastOccurrence + 1);    //We remove the filename extension and save the part after the last backslash occurrence.
 
                 //If the user tries to give a file the filename it already has, we leave it as it is, give its index number to a variable for later usage and continue renaming the rest of the files.
-                if (oldFilename.Equals(textBoxRenameFile.Text))
+                if ((oldFilename+ filenameExtension).Equals(textBoxRenameFile.Text+ filenameExtension))
                 {
                     fileNotRenamedIndex = selectedListboxIndices[i];
                     continue;
@@ -307,6 +307,6 @@ namespace All_In_One_Practice_Program
             }
         }
     }
-}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy". (Να το κάνω για το rename many files και να λέει "one of the files is already named...". Στο partial, να τσεκάρει αν
-//τα δύο text boxes περιέχουν την ίδια τιμή.) + να γράψω εδώ ή στο GitHub ότι δεν έχω υπολογίσει τις περιπτώσεις που 2 αρχεία έχουν το ίδιο όνομα αλλά διαφορετική επέκταση ή να το υλοποιήσω. + να κάνει sort το listbox μετά από κάθε rename.
+}//Όταν πας να μετονομάσεις στο ίδιο όνομα, να βγάζει μόνο μήνυμα και να μη μετονομάζει το ήδη υπάρχον σε "- Copy" για τα 2 partial. (Να τσεκάρει αν τα δύο text boxes περιέχουν την ίδια τιμή.) + ίδια επέκταση και για rename πολλά +
+ //να κάνει sort το listbox μετά από κάθε rename.
  //NEXT ίδια αρχεία
