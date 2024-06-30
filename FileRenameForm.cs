@@ -18,6 +18,11 @@ namespace All_In_One_Practice_Program
             InitializeComponent();
         }
 
+
+        //---EVENTS---
+
+        //---BUTTON EVENTS---
+
         private void buttonChooseFile_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -41,13 +46,6 @@ namespace All_In_One_Practice_Program
             }
         }
 
-        private void listBox1_MouseHover(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedItem != null)
-                toolTip1.SetToolTip(listBox1, listBox1.SelectedItem.ToString());    //Sets a tool tip that shows the selected file's name. Useful when the path is long and cannot be displayed in its entirety.
-                                                                                    //It shows the currently selected file's name no matter where you hover inside the list box.
-        }
-
         private void renameButton_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxRenameFile.Text))
@@ -56,6 +54,27 @@ namespace All_In_One_Practice_Program
                 RenameManyFiles(listBox1.SelectedIndices);
         }
 
+        private void buttonPartiallyRename_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameFile();
+            else if (listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameManyFiles(listBox1.SelectedIndices);
+        }
+
+
+        //---LISTBOX EVENTS---
+
+        private void listBox1_MouseHover(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+                toolTip1.SetToolTip(listBox1, listBox1.SelectedItem.ToString());    //Sets a tool tip that shows the selected file's name. Useful when the path is long and cannot be displayed in its entirety.
+                                                                                    //It shows the currently selected file's name no matter where you hover inside the list box.
+        }
+
+
+        //---TEXTBOX EVENTS---
+
         private void textBoxRenameFile_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxRenameFile.Text))
@@ -63,6 +82,37 @@ namespace All_In_One_Practice_Program
             else if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxRenameFile.Text))
                 RenameManyFiles(listBox1.SelectedIndices);
         }
+
+        private void textBoxPartialRenameOrigText_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameFile();
+            else if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameManyFiles(listBox1.SelectedIndices);
+        }
+
+        private void textBoxPartialRenameFinalText_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameFile();
+            else if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
+                PartiallyRenameManyFiles(listBox1.SelectedIndices);
+        }
+
+
+        //---TIMER EVENTS---
+
+        //Resets the labels' visibility and text.
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelWrongPartialRename.Visible = false;
+            labelWrongRename.Visible = false;
+
+            timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
+        }
+
+
+        //---METHODS---
 
         private void RenameFile()
         {
@@ -177,30 +227,6 @@ namespace All_In_One_Practice_Program
             textBoxRenameFile.Clear();
         }
 
-        private void buttonPartiallyRename_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameFile();
-            else if (listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameManyFiles(listBox1.SelectedIndices);
-        }
-
-        private void textBoxPartialRenameOrigText_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameFile();
-            else if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameManyFiles(listBox1.SelectedIndices);
-        }
-
-        private void textBoxPartialRenameFinalText_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count == 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameFile();
-            else if (e.KeyCode.Equals(Keys.Enter) && listBox1.SelectedIndices.Count > 1 && !string.IsNullOrWhiteSpace(textBoxPartialRenameOrigText.Text) && !string.IsNullOrWhiteSpace(textBoxPartialRenameFinalText.Text))
-                PartiallyRenameManyFiles(listBox1.SelectedIndices);
-        }
-
         private void PartiallyRenameFile()
         {
             string oldFilePath = listBox1.SelectedItem.ToString();                              //E.g., "D:\Docs\Personal\Notes_from_work.pdf"
@@ -264,15 +290,6 @@ namespace All_In_One_Practice_Program
 
             textBoxPartialRenameOrigText.Clear();
             textBoxPartialRenameFinalText.Clear();
-        }
-
-        //Resets the labels' visibility and text.
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            labelWrongPartialRename.Visible = false;
-            labelWrongRename.Visible = false;
-
-            timer1.Stop();                                      //The timer is stopped, because we want the event/method to be performed only once.
         }
 
         private void PartiallyRenameManyFiles(ListBox.SelectedIndexCollection filesToRename)
@@ -353,4 +370,3 @@ namespace All_In_One_Practice_Program
         }
     }
 }
- //NEXT ίδια αρχεία

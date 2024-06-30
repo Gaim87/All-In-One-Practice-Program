@@ -33,6 +33,7 @@ namespace All_In_One_Practice_Program
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonRenameFiles = new System.Windows.Forms.Button();
             this.buttonQuit = new System.Windows.Forms.Button();
+            this.buttonFindDuplicateFiles = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReplaceWordText
@@ -72,11 +73,22 @@ namespace All_In_One_Practice_Program
             this.buttonQuit.UseVisualStyleBackColor = true;
             this.buttonQuit.Click += new System.EventHandler(this.buttonQuit_Click);
             // 
+            // buttonFindDuplicateFiles
+            // 
+            this.buttonFindDuplicateFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFindDuplicateFiles.Location = new System.Drawing.Point(472, 104);
+            this.buttonFindDuplicateFiles.Name = "buttonFindDuplicateFiles";
+            this.buttonFindDuplicateFiles.Size = new System.Drawing.Size(169, 62);
+            this.buttonFindDuplicateFiles.TabIndex = 3;
+            this.buttonFindDuplicateFiles.Text = "Find duplicate files";
+            this.buttonFindDuplicateFiles.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonFindDuplicateFiles);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.buttonRenameFiles);
             this.Controls.Add(this.buttonReplaceWordText);
@@ -92,6 +104,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonRenameFiles;
         private System.Windows.Forms.Button buttonQuit;
+        private System.Windows.Forms.Button buttonFindDuplicateFiles;
     }
 }
 
