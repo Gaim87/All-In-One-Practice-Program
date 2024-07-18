@@ -82,6 +82,7 @@ namespace All_In_One_Practice_Program
             this.buttonFindDuplicateFiles.TabIndex = 3;
             this.buttonFindDuplicateFiles.Text = "Find duplicate files";
             this.buttonFindDuplicateFiles.UseVisualStyleBackColor = true;
+            this.buttonFindDuplicateFiles.Click += new System.EventHandler(this.buttonFindDuplicateFiles_Click);
             // 
             // Form1
             // 
