@@ -55,7 +55,7 @@ namespace All_In_One_Practice_Program
             this.buttonChooseFiles.TabIndex = 1;
             this.buttonChooseFiles.Text = "Choose files";
             this.buttonChooseFiles.UseVisualStyleBackColor = true;
-            this.buttonChooseFiles.Click += new System.EventHandler(this.buttonChooseFolder_Click);
+            this.buttonChooseFiles.Click += new System.EventHandler(this.buttonChooseFiles_Click);
             // 
             // openFileDialog1
             // 
@@ -73,6 +73,7 @@ namespace All_In_One_Practice_Program
             // 
             // buttonQuit
             // 
+            this.buttonQuit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonQuit.Location = new System.Drawing.Point(651, 48);
             this.buttonQuit.Name = "buttonQuit";
