@@ -45,6 +45,7 @@ namespace All_In_One_Practice_Program
             this.buttonFindDuplicates.TabIndex = 0;
             this.buttonFindDuplicates.Text = "Find duplicate files";
             this.buttonFindDuplicates.UseVisualStyleBackColor = true;
+            this.buttonFindDuplicates.Click += new System.EventHandler(this.buttonFindDuplicates_Click);
             // 
             // buttonChooseFiles
             // 
@@ -66,7 +67,7 @@ namespace All_In_One_Practice_Program
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(38, 237);
+            this.listBox1.Location = new System.Drawing.Point(43, 206);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(1568, 564);
             this.listBox1.TabIndex = 2;
