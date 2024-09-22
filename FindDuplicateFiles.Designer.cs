@@ -29,12 +29,14 @@ namespace All_In_One_Practice_Program
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonFindDuplicates = new System.Windows.Forms.Button();
             this.buttonChooseFiles = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.buttonQuit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelNoFilesSelected = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // buttonFindDuplicates
@@ -84,21 +86,29 @@ namespace All_In_One_Practice_Program
             this.buttonQuit.Text = "Quit";
             this.buttonQuit.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // labelNoFilesSelected
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 166);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
+            this.labelNoFilesSelected.AutoSize = true;
+            this.labelNoFilesSelected.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNoFilesSelected.ForeColor = System.Drawing.Color.Red;
+            this.labelNoFilesSelected.Location = new System.Drawing.Point(325, 163);
+            this.labelNoFilesSelected.Name = "labelNoFilesSelected";
+            this.labelNoFilesSelected.Size = new System.Drawing.Size(269, 24);
+            this.labelNoFilesSelected.TabIndex = 4;
+            this.labelNoFilesSelected.Text = "You have not selected any files";
+            this.labelNoFilesSelected.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 2500;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FindDuplicateFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1647, 876);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelNoFilesSelected);
             this.Controls.Add(this.buttonQuit);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonChooseFiles);
@@ -117,6 +127,7 @@ namespace All_In_One_Practice_Program
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button buttonQuit;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelNoFilesSelected;
+        private System.Windows.Forms.Timer timer1;
     }
 }
