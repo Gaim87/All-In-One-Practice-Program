@@ -160,7 +160,6 @@ namespace All_In_One_Practice_Program
                 labelNoFilesSelected.Visible = true;
                 timer1.Start();
             }
-                //MessageBox.Show("You have not selected any files");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -169,7 +168,3 @@ namespace All_In_One_Practice_Program
         }
     }
 }
-//Να εμφανίζω τα ονόματα των αρχείων κομμένα (μόνο το όνομα του αρχείου, όχι όλο το path).
-
-//Ενημέρωση σημειώσεις μου για το ότι όταν ψάχνεις για ένα string μέσα σε λίστα, χρειάζεσαι foreach, αλλιώς ψάχνει το string αυτούσιο. Ενώ εγώ ήθελα να βρω αν το string μου περιέχετο σε κάποιο από τα ΠΕΡΙΕΧΟΜΕΝΑ
-//της λίστας και όχι αυτούσιο.
